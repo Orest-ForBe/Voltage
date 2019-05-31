@@ -153,9 +153,9 @@ void Renderer_t::DrawAxis(void)
 
 void Renderer_t::DrawScene(void)
 {
-  glClearColor(0.3, 0.3, 0.3, 1.0);
+  glClearColor(0.0, 0.0, 0.0, 1.0);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
+  glDisable(GL_TEXTURE_2D);
   // todo: before draw scene event
 //  glMatrixMode(GL_PROJECTION);
 //  glLoadIdentity();

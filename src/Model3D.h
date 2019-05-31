@@ -9,6 +9,9 @@
 #define MODEL3D_H_
 
 #include "RenderCache.h"
+#include <GL/glew.h>
+#include <GL/gl.h>
+#include <GL/glu.h>
 
 class Renderer_t;
 

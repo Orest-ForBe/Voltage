@@ -114,7 +114,7 @@ unsigned int RenderCache_t::LoadTexture(const std::string TextureName)
   if (CacheTextures.find(TextureName) != CacheTextures.end())
     return FindTexture(TextureName);
 
-  lFile = "models/" + TextureName.substr(TextureName.find_last_of("/\\") + 1);
+  lFile = "graphics/" + TextureName.substr(TextureName.find_last_of("/\\") + 1);
 
 
   if (!(TextureImage[0] = IMG_Load(lFile.c_str())))
