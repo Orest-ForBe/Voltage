@@ -10,6 +10,7 @@
 #include "GL/gl.h"
 #include "GL/glut.h"
 #include "math.h"
+#include "Renderer.h"
 
 Model3D::Model3D(Renderer_t * prend)
 {
@@ -33,7 +34,7 @@ void Model3D::AssignObj3D(Obj3D* object)
 
 void Model3D::DrawGeometry(Obj3D::Geom_t* g)
 {
-  glBindTexture(GL_TEXTURE_2D, g->TextureID);
+  Rend->BindTexture(g->TextureID);
   glBegin(GL_TRIANGLES);
   for (size_t i = 0; i < g->mesh.size(); i++)
   {
@@ -108,7 +109,8 @@ void Camera_t::Draw(void)
   {
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-    gluLookAt(Pos.X, Pos.Y, Pos.Z, ViewTo.X, ViewTo.Y, ViewTo.Z, 0, 1, 0);
+    gluLookAt(Pos.X, Pos.Y, Pos.Z, ViewTo.X, ViewTo.Y, ViewTo.Z, 0.0f, 1.0f, 0.0);
+//    glBegin(GL_TRIANGLES);
   }
 }
 

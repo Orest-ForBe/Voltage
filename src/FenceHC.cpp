@@ -10,7 +10,7 @@
 FenceHC_t::FenceHC_t(Renderer_t * prend) : Model3D(prend)
 {
   // TODO Auto-generated constructor stub
-
+  Angle = 0;
 }
 
 FenceHC_t::~FenceHC_t()
@@ -20,10 +20,11 @@ FenceHC_t::~FenceHC_t()
 
 void FenceHC_t::Draw(void)
 {
-  Obj3D::Geom_t * g = Obj->GetMesh("fence_h1");
+  Obj3D::Geom_t * g = Obj->GetMesh("fence_simple");
 
   glPushMatrix();
   glTranslatef(Pos.X, Pos.Y, Pos.Z);
+  glRotated(Angle, 0.0f, 1.0f, 0.0f);
   DrawGeometry(g);
   glPopMatrix();
 }

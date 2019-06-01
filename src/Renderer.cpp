@@ -17,6 +17,8 @@ Renderer_t::Renderer_t()
 {
   // TODO Auto-generated constructor stub
   RCache = new RenderCache_t();
+  CurTexID = -1;
+  gb = false;
 }
 
 Renderer_t::~Renderer_t()
@@ -74,10 +76,11 @@ void Renderer_t::Init(const std::string & winname, int width, int height, bool f
   glContext = SDL_GL_CreateContext(win);
   SDL_GetWindowSize(win, &win_width, &win_height);
 
-  glAlphaFunc(GL_GREATER, 0.0);
+  glAlphaFunc(GL_ALWAYS, 0.1);
   glEnable(GL_ALPHA_TEST);
   glEnable(GL_BLEND);
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+//  glBlendFunc(GL_SRC_ALPHA, GL_SRC_ALPHA_SATURATE);
 
   IMG_Init(IMG_INIT_PNG | IMG_INIT_JPG | IMG_INIT_WEBP);
 
@@ -85,10 +88,11 @@ void Renderer_t::Init(const std::string & winname, int width, int height, bool f
 
   glEnable(GL_DEPTH_TEST);
   glDepthMask(GL_TRUE);
+  glDepthFunc(GL_LEQUAL);
   glClearDepth(1.f);
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
-  gluPerspective(90.f, 16.0 / 9.0/*1.f*/, 1.f, 5000.f);
+  gluPerspective(40.f, 16.0 / 9.0/*1.f*/, 1.f, 10000.f);
 }
 
 
@@ -164,8 +168,17 @@ void Renderer_t::DrawScene(void)
   glEnable(GL_TEXTURE_2D);
   glColor3f(1.0f, 1.0f, 1.0f);
 
+  CurTexID = -1;
+  gb = true;
+
   for (size_t i = 0; i < Scene.size(); i++)
     Scene[i]->Draw();
+
+  if (gb)
+  {
+//    glEnd();
+//    gb = false;
+  }
 }
 
 void Renderer_t::UpdateScreen(void)
@@ -173,3 +186,18 @@ void Renderer_t::UpdateScreen(void)
   SDL_GL_SwapWindow(win);
 }
 
+void Renderer_t::BindTexture(GLint TexID)
+{
+  if (TexID !=CurTexID)
+  {
+//    if (gb)
+//    {
+//      glEnd();
+//      gb = false;
+//    }
+    CurTexID = TexID;
+    glBindTexture(GL_TEXTURE_2D, TexID);
+//    glBegin(GL_TRIANGLES);
+//    gb = true;
+  }
+}

@@ -23,6 +23,8 @@ private:
 
   RenderCache_t * RCache;
   std::vector<Model3D *> Scene;
+  GLint CurTexID;
+  bool gb;
 
 public:
   Renderer_t();
@@ -40,7 +42,11 @@ public:
   virtual void DrawScene(void);
   virtual void UpdateScreen(void);
 
+  virtual void BindTexture(GLint TexID);
+
   virtual void DrawAxis(void);
+
+  virtual RenderCache_t & getRCache(void) { return *RCache;}
 
   int win_width;
   int win_height;

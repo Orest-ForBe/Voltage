@@ -17,6 +17,8 @@ public:
   virtual ~Fence_t();
 
   virtual void Draw(void);
+
+  float Angle;
 };
 
 #endif /* FENCE_H_ */

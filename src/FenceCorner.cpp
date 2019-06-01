@@ -1,26 +1,26 @@
 /*
- * Fence.cpp
+ * FenceCorner.cpp
  *
- *  Created on: May 31, 2019
+ *  Created on: Jun 1, 2019
  *      Author: tim
  */
 
-#include "Fence.h"
+#include "FenceCorner.h"
 
-Fence_t::Fence_t(Renderer_t * prend) : Model3D(prend)
+FenceCorner_t::FenceCorner_t(Renderer_t * prend) : Model3D(prend)
 {
   // TODO Auto-generated constructor stub
   Angle = 0;
 }
 
-Fence_t::~Fence_t()
+FenceCorner_t::~FenceCorner_t()
 {
   // TODO Auto-generated destructor stub
 }
 
-void Fence_t::Draw(void)
+void FenceCorner_t::Draw(void)
 {
-  Obj3D::Geom_t * g = Obj->GetMesh("fence_linear");
+  Obj3D::Geom_t * g = Obj->GetMesh("fence_corner");
 
   glPushMatrix();
   glTranslatef(Pos.X, Pos.Y, Pos.Z);
