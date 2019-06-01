@@ -8,6 +8,9 @@
 #ifndef RENDERCACHE_H_
 #define RENDERCACHE_H_
 
+#ifdef __WIN32__
+#include <windows.h>
+#endif
 #include <map>
 #include <vector>
 #include <string>

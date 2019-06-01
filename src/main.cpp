@@ -3,6 +3,9 @@
 //============================================================================
 
 #include <iostream>
+#ifdef __WIN32__
+#include <windows.h>
+#endif
 #include "Renderer.h"
 #include "LoaderASE.h"
 #include <SDL2/SDL.h>
@@ -16,6 +19,7 @@
 #include "FenceCorner.h"
 #include "PCB.h"
 #include "TransformerBox.h"
+
 
 Renderer_t * Renderer;
 Camera_t * Cam1;
@@ -136,6 +140,7 @@ int main(int argc, char **argv)
     GLint viewport[4];
 
     Renderer->DrawScene();
+
 
     glDisable(GL_DEPTH_TEST);
     glGetIntegerv(GL_VIEWPORT, viewport);

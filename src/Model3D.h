@@ -8,6 +8,9 @@
 #ifndef MODEL3D_H_
 #define MODEL3D_H_
 
+#ifdef __WIN32__
+#include <windows.h>
+#endif
 #include "RenderCache.h"
 #include <GL/glew.h>
 #include <GL/gl.h>

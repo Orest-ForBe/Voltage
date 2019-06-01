@@ -33,6 +33,15 @@ std::ostream & operator<<(std::ostream & os, std::vector<T> vec)
 }
 #endif
 
+#ifdef __WIN32__
+#define std_stoi(x) atoi(x.c_str())
+#define std_stof(x) atof(x.c_str())
+#else
+#define std_stoi(x) std::stoi(x)
+#define std_stof(x) std::stof(x)
+#endif
+
+
 std::string capit(std::string str)
 {
   size_t i;
@@ -231,47 +240,47 @@ ASEParser_t::pError_t Scene_t::SetFileName(std::vector<std::string>& args)
 
 ASEParser_t::pError_t Scene_t::SetSceneFirstFrame(std::vector<std::string>& args)
 {
-  SceneFirstFrame = std::stoi(args[0]);
+  SceneFirstFrame = std_stoi(args[0]);
   return pOk;
 }
 
 ASEParser_t::pError_t Scene_t::SetSceneLastFrame(std::vector<std::string>& args)
 {
-  SceneLastFrame = std::stoi(args[0]);
+  SceneLastFrame = std_stoi(args[0]);
   return pOk;
 }
 
 ASEParser_t::pError_t Scene_t::SetSceneFrameSpeed(std::vector<std::string>& args)
 {
-  SceneFrameSpeed = std::stoi(args[0]);
+  SceneFrameSpeed = std_stoi(args[0]);
   return pOk;
 }
 
 ASEParser_t::pError_t Scene_t::SetSceneTicksPerFrame(std::vector<std::string>& args)
 {
-  SceneTicksPerFrame = std::stoi(args[0]);
+  SceneTicksPerFrame = std_stoi(args[0]);
   return pOk;
 }
 
 ASEParser_t::pError_t Scene_t::SetSceneBackgroundStatic(std::vector<std::string>& args)
 {
-  SceneBackgroundStatic.R = std::stof(args[0]);
-  SceneBackgroundStatic.G = std::stof(args[1]);
-  SceneBackgroundStatic.B = std::stof(args[2]);
+  SceneBackgroundStatic.R = std_stof(args[0]);
+  SceneBackgroundStatic.G = std_stof(args[1]);
+  SceneBackgroundStatic.B = std_stof(args[2]);
   return pOk;
 }
 
 ASEParser_t::pError_t Scene_t::SetSceneAmbientStatic(std::vector<std::string>& args)
 {
-  SceneAmbientStatic.R = std::stof(args[0]);
-  SceneAmbientStatic.G = std::stof(args[1]);
-  SceneAmbientStatic.B = std::stof(args[2]);
+  SceneAmbientStatic.R = std_stof(args[0]);
+  SceneAmbientStatic.G = std_stof(args[1]);
+  SceneAmbientStatic.B = std_stof(args[2]);
   return pOk;
 }
 
 ASEParser_t::pError_t MaterialList_t::SetMaterialCount(std::vector<std::string>& args)
 {
-  MaterialCount = std::stoi(args[0]);
+  MaterialCount = std_stoi(args[0]);
   return pOk;
 }
 
@@ -297,49 +306,49 @@ ASEParser_t::pError_t Material_t::SetMaterialClass(std::vector<std::string>& arg
 
 ASEParser_t::pError_t Material_t::SetMaterialAmbient(std::vector<std::string>& args)
 {
-  MaterialAmbient.R = std::stof(args[0]);
-  MaterialAmbient.G = std::stof(args[1]);
-  MaterialAmbient.B = std::stof(args[2]);
+  MaterialAmbient.R = std_stof(args[0]);
+  MaterialAmbient.G = std_stof(args[1]);
+  MaterialAmbient.B = std_stof(args[2]);
   return pOk;
 }
 
 ASEParser_t::pError_t Material_t::SetMaterialDiffuse(std::vector<std::string>& args)
 {
-  MaterialDiffuse.R = std::stof(args[0]);
-  MaterialDiffuse.G = std::stof(args[1]);
-  MaterialDiffuse.B = std::stof(args[2]);
+  MaterialDiffuse.R = std_stof(args[0]);
+  MaterialDiffuse.G = std_stof(args[1]);
+  MaterialDiffuse.B = std_stof(args[2]);
   return pOk;
 }
 
 ASEParser_t::pError_t Material_t::SetMaterialSpecular(std::vector<std::string>& args)
 {
-  MaterialSpecular.R = std::stof(args[0]);
-  MaterialSpecular.G = std::stof(args[1]);
-  MaterialSpecular.B = std::stof(args[2]);
+  MaterialSpecular.R = std_stof(args[0]);
+  MaterialSpecular.G = std_stof(args[1]);
+  MaterialSpecular.B = std_stof(args[2]);
   return pOk;
 }
 
 ASEParser_t::pError_t Material_t::SetMaterialShine(std::vector<std::string>& args)
 {
-  MaterialShine = std::stof(args[0]);
+  MaterialShine = std_stof(args[0]);
   return pOk;
 }
 
 ASEParser_t::pError_t Material_t::SetMaterialShinestrength(std::vector<std::string>& args)
 {
-  MaterialShinestrength = std::stof(args[0]);
+  MaterialShinestrength = std_stof(args[0]);
   return pOk;
 }
 
 ASEParser_t::pError_t Material_t::SetMaterialTransparency(std::vector<std::string>& args)
 {
-  MaterialTransparency = std::stof(args[0]);
+  MaterialTransparency = std_stof(args[0]);
   return pOk;
 }
 
 ASEParser_t::pError_t Material_t::SetMaterialWiresize(std::vector<std::string>& args)
 {
-  MaterialWiresize = std::stof(args[0]);
+  MaterialWiresize = std_stof(args[0]);
   return pOk;
 }
 
@@ -351,13 +360,13 @@ ASEParser_t::pError_t Material_t::SetMaterialShading(std::vector<std::string>& a
 
 ASEParser_t::pError_t Material_t::SetMaterialXpFalloff(std::vector<std::string>& args)
 {
-  MaterialXpFalloff = std::stof(args[0]);
+  MaterialXpFalloff = std_stof(args[0]);
   return pOk;
 }
 
 ASEParser_t::pError_t Material_t::SetMaterialSelfillum(std::vector<std::string>& args)
 {
-  MaterialSelfillum = std::stof(args[0]);
+  MaterialSelfillum = std_stof(args[0]);
   return pOk;
 }
 
@@ -395,13 +404,13 @@ ASEParser_t::pError_t MaterialMap_t::SetMapClass(std::vector<std::string>& args)
 
 ASEParser_t::pError_t MaterialMap_t::SetMapSubno(std::vector<std::string>& args)
 {
-  MapSubno = std::stoi(args[0]);
+  MapSubno = std_stoi(args[0]);
   return pOk;
 }
 
 ASEParser_t::pError_t MaterialMap_t::SetMapAmount(std::vector<std::string>& args)
 {
-  MapAmount = std::stof(args[0]);
+  MapAmount = std_stof(args[0]);
   return pOk;
 }
 
@@ -419,67 +428,67 @@ ASEParser_t::pError_t MaterialMap_t::SetMapType(std::vector<std::string>& args)
 
 ASEParser_t::pError_t MaterialMap_t::SetUvwUOffset(std::vector<std::string>& args)
 {
-  UvwUOffset = std::stof(args[0]);
+  UvwUOffset = std_stof(args[0]);
   return pOk;
 }
 
 ASEParser_t::pError_t MaterialMap_t::SetUvwVOffset(std::vector<std::string>& args)
 {
-  UvwVOffset = std::stof(args[0]);
+  UvwVOffset = std_stof(args[0]);
   return pOk;
 }
 
 ASEParser_t::pError_t MaterialMap_t::SetUvwUTiling(std::vector<std::string>& args)
 {
-  UvwUTiling = std::stof(args[0]);
+  UvwUTiling = std_stof(args[0]);
   return pOk;
 }
 
 ASEParser_t::pError_t MaterialMap_t::SetUvwVTiling(std::vector<std::string>& args)
 {
-  UvwVTiling = std::stof(args[0]);
+  UvwVTiling = std_stof(args[0]);
   return pOk;
 }
 
 ASEParser_t::pError_t MaterialMap_t::SetUvwAngle(std::vector<std::string>& args)
 {
-  UvwAngle = std::stof(args[0]);
+  UvwAngle = std_stof(args[0]);
   return pOk;
 }
 
 ASEParser_t::pError_t MaterialMap_t::SetUvwBlur(std::vector<std::string>& args)
 {
-  UvwBlur = std::stof(args[0]);
+  UvwBlur = std_stof(args[0]);
   return pOk;
 }
 
 ASEParser_t::pError_t MaterialMap_t::SetUvwBlurOffset(std::vector<std::string>& args)
 {
-  UvwBlurOffset = std::stof(args[0]);
+  UvwBlurOffset = std_stof(args[0]);
   return pOk;
 }
 
 ASEParser_t::pError_t MaterialMap_t::SetUvwNouseAmt(std::vector<std::string>& args)
 {
-  UvwNouseAmt = std::stof(args[0]);
+  UvwNouseAmt = std_stof(args[0]);
   return pOk;
 }
 
 ASEParser_t::pError_t MaterialMap_t::SetUvwNoiseSize(std::vector<std::string>& args)
 {
-  UvwNoiseSize = std::stof(args[0]);
+  UvwNoiseSize = std_stof(args[0]);
   return pOk;
 }
 
 ASEParser_t::pError_t MaterialMap_t::SetUvwNoiseLevel(std::vector<std::string>& args)
 {
-  UvwNoiseLevel = std::stoi(args[0]);
+  UvwNoiseLevel = std_stoi(args[0]);
   return pOk;
 }
 
 ASEParser_t::pError_t MaterialMap_t::SetUvwNoisePhase(std::vector<std::string>& args)
 {
-  UvwNoisePhase = std::stof(args[0]);
+  UvwNoisePhase = std_stof(args[0]);
   return pOk;
 }
 
@@ -510,101 +519,101 @@ ASEParser_t::pError_t NodeTm_t::SetNodeName(std::vector<std::string>& args)
 
 ASEParser_t::pError_t NodeTm_t::SetInheritPos(std::vector<std::string>& args)
 {
-  InheritPos.I1 = std::stoi(args[0]);
-  InheritPos.I2 = std::stoi(args[1]);
-  InheritPos.I3 = std::stoi(args[2]);
+  InheritPos.I1 = std_stoi(args[0]);
+  InheritPos.I2 = std_stoi(args[1]);
+  InheritPos.I3 = std_stoi(args[2]);
   return pOk;
 }
 
 ASEParser_t::pError_t NodeTm_t::SetInheritRot(std::vector<std::string>& args)
 {
-  InheritRot.I1 = std::stoi(args[0]);
-  InheritRot.I2 = std::stoi(args[1]);
-  InheritRot.I3 = std::stoi(args[2]);
+  InheritRot.I1 = std_stoi(args[0]);
+  InheritRot.I2 = std_stoi(args[1]);
+  InheritRot.I3 = std_stoi(args[2]);
   return pOk;
 }
 
 ASEParser_t::pError_t NodeTm_t::SetInheritScl(std::vector<std::string>& args)
 {
-  InheritScl.I1 = std::stoi(args[0]);
-  InheritScl.I2 = std::stoi(args[1]);
-  InheritScl.I3 = std::stoi(args[2]);
+  InheritScl.I1 = std_stoi(args[0]);
+  InheritScl.I2 = std_stoi(args[1]);
+  InheritScl.I3 = std_stoi(args[2]);
   return pOk;
 }
 
 ASEParser_t::pError_t NodeTm_t::SetTmRow0(std::vector<std::string>& args)
 {
-  TmRow0.f1 = std::stof(args[0]);
-  TmRow0.f2 = std::stof(args[1]);
-  TmRow0.f3 = std::stof(args[2]);
+  TmRow0.f1 = std_stof(args[0]);
+  TmRow0.f2 = std_stof(args[1]);
+  TmRow0.f3 = std_stof(args[2]);
   return pOk;
 }
 
 ASEParser_t::pError_t NodeTm_t::SetTmRow1(std::vector<std::string>& args)
 {
-  TmRow1.f1 = std::stof(args[0]);
-  TmRow1.f2 = std::stof(args[1]);
-  TmRow1.f3 = std::stof(args[2]);
+  TmRow1.f1 = std_stof(args[0]);
+  TmRow1.f2 = std_stof(args[1]);
+  TmRow1.f3 = std_stof(args[2]);
   return pOk;
 }
 
 ASEParser_t::pError_t NodeTm_t::SetTmRow2(std::vector<std::string>& args)
 {
-  TmRow2.f1 = std::stof(args[0]);
-  TmRow2.f2 = std::stof(args[1]);
-  TmRow2.f3 = std::stof(args[2]);
+  TmRow2.f1 = std_stof(args[0]);
+  TmRow2.f2 = std_stof(args[1]);
+  TmRow2.f3 = std_stof(args[2]);
   return pOk;
 }
 
 ASEParser_t::pError_t NodeTm_t::SetTmRow3(std::vector<std::string>& args)
 {
-  TmRow3.f1 = std::stof(args[0]);
-  TmRow3.f2 = std::stof(args[1]);
-  TmRow3.f3 = std::stof(args[2]);
+  TmRow3.f1 = std_stof(args[0]);
+  TmRow3.f2 = std_stof(args[1]);
+  TmRow3.f3 = std_stof(args[2]);
   return pOk;
 }
 
 ASEParser_t::pError_t NodeTm_t::SetTmPos(std::vector<std::string>& args)
 {
-  TmPos.X = std::stof(args[0]);
-  TmPos.Y = std::stof(args[1]);
-  TmPos.Z = std::stof(args[2]);
+  TmPos.X = std_stof(args[0]);
+  TmPos.Y = std_stof(args[1]);
+  TmPos.Z = std_stof(args[2]);
   return pOk;
 }
 
 ASEParser_t::pError_t NodeTm_t::SetTmRotaxis(std::vector<std::string>& args)
 {
-  TmRotaxis.X = std::stof(args[0]);
-  TmRotaxis.Y = std::stof(args[1]);
-  TmRotaxis.Z = std::stof(args[2]);
+  TmRotaxis.X = std_stof(args[0]);
+  TmRotaxis.Y = std_stof(args[1]);
+  TmRotaxis.Z = std_stof(args[2]);
   return pOk;
 }
 
 ASEParser_t::pError_t NodeTm_t::SetTmRotangle(std::vector<std::string>& args)
 {
-  TmRotangle = std::stof(args[0]);
+  TmRotangle = std_stof(args[0]);
   return pOk;
 }
 
 ASEParser_t::pError_t NodeTm_t::SetTmScale(std::vector<std::string>& args)
 {
-  TmScale.X = std::stof(args[0]);
-  TmScale.Y = std::stof(args[1]);
-  TmScale.Z = std::stof(args[2]);
+  TmScale.X = std_stof(args[0]);
+  TmScale.Y = std_stof(args[1]);
+  TmScale.Z = std_stof(args[2]);
   return pOk;
 }
 
 ASEParser_t::pError_t NodeTm_t::SetTmScaleaxis(std::vector<std::string>& args)
 {
-  TmScaleaxis.X = std::stof(args[0]);
-  TmScaleaxis.Y = std::stof(args[1]);
-  TmScaleaxis.Z = std::stof(args[2]);
+  TmScaleaxis.X = std_stof(args[0]);
+  TmScaleaxis.Y = std_stof(args[1]);
+  TmScaleaxis.Z = std_stof(args[2]);
   return pOk;
 }
 
 ASEParser_t::pError_t NodeTm_t::SetTmScaleaxisang(std::vector<std::string>& args)
 {
-  TmScaleaxisang = std::stof(args[0]);
+  TmScaleaxisang = std_stof(args[0]);
   return pOk;
 }
 
@@ -618,9 +627,9 @@ ASEParser_t::pError_t Geomobject_t::SetMesh(std::vector<std::string>& args)
 ASEParser_t::pError_t MeshVertexList_t::SetMeshVertex(std::vector<std::string>& args)
 {
   Vector3f val;
-  val.X = std::stof(args[1]);
-  val.Y = std::stof(args[3]);
-  val.Z = std::stof(args[2]);
+  val.X = std_stof(args[1]);
+  val.Y = std_stof(args[3]);
+  val.Z = std_stof(args[2]);
   MeshVertex.push_back(val);
   return pOk;
 }
@@ -628,11 +637,11 @@ ASEParser_t::pError_t MeshVertexList_t::SetMeshVertex(std::vector<std::string>& 
 ASEParser_t::pError_t MeshFaceList_t::SetMeshFace(std::vector<std::string>& args)
 {
   MeshFace_t mf;
-  mf.A = std::stoi(args[2]);
-  mf.B = std::stoi(args[4]);
-  mf.C = std::stoi(args[6]);
+  mf.A = std_stoi(args[2]);
+  mf.B = std_stoi(args[4]);
+  mf.C = std_stoi(args[6]);
   mf.SmoothGroup = 0;
-  mf.MtlId = std::stoi(args[args.size() - 1]);
+  mf.MtlId = std_stoi(args[args.size() - 1]);
   MeshFace.push_back(mf);
   return pOk;
 }
@@ -640,28 +649,28 @@ ASEParser_t::pError_t MeshFaceList_t::SetMeshFace(std::vector<std::string>& args
 ASEParser_t::pError_t MeshTVertList_t::SetMeshTVert(std::vector<std::string>& args)
 {
   Vector3f val;
-  val.X = std::stof(args[1]);
-  val.Y = std::stof(args[2]);
-  val.Z = std::stof(args[3]);
+  val.X = std_stof(args[1]);
+  val.Y = std_stof(args[2]);
+  val.Z = std_stof(args[3]);
   MeshTVert.push_back(val);
   return pOk;
 }
 
 ASEParser_t::pError_t Mesh_t::SetTimevalue(std::vector<std::string>& args)
 {
-  Timevalue = std::stoi(args[0]);
+  Timevalue = std_stoi(args[0]);
   return pOk;
 }
 
 ASEParser_t::pError_t Mesh_t::SetMeshNumvertex(std::vector<std::string>& args)
 {
-  MeshNumvertex = std::stoi(args[0]);
+  MeshNumvertex = std_stoi(args[0]);
   return pOk;
 }
 
 ASEParser_t::pError_t Mesh_t::SetMeshNumfaces(std::vector<std::string>& args)
 {
-  MeshNumfaces = std::stoi(args[0]);
+  MeshNumfaces = std_stoi(args[0]);
   return pOk;
 }
 
@@ -681,7 +690,7 @@ ASEParser_t::pError_t Mesh_t::SetMeshFaceList(std::vector<std::string>& args)
 
 ASEParser_t::pError_t Mesh_t::SetMeshNumtvertex(std::vector<std::string>& args)
 {
-  MeshNumvertex = std::stoi(args[0]);
+  MeshNumvertex = std_stoi(args[0]);
   return pOk;
 }
 
@@ -694,7 +703,7 @@ ASEParser_t::pError_t Mesh_t::SetMeshTVertList(std::vector<std::string>& args)
 
 ASEParser_t::pError_t Mesh_t::SetMeshNumTVFaces(std::vector<std::string>& args)
 {
-  MeshNumTVFaces = std::stoi(args[0]);
+  MeshNumTVFaces = std_stoi(args[0]);
   return pOk;
 }
 
@@ -708,16 +717,16 @@ ASEParser_t::pError_t Mesh_t::SetMeshTFaceList(std::vector<std::string>& args)
 ASEParser_t::pError_t MeshTFaceList_t::SetMeshTFace(std::vector<std::string>& args)
 {
   MeshTFace_t val;
-  val.A = std::stof(args[1]);
-  val.B = std::stof(args[2]);
-  val.C = std::stof(args[3]);
+  val.A = std_stof(args[1]);
+  val.B = std_stof(args[2]);
+  val.C = std_stof(args[3]);
   MeshTFace.push_back(val);
   return pOk;
 }
 
 ASEParser_t::pError_t Mesh_t::SetMeshNumCVertex(std::vector<std::string>& args)
 {
-  MeshNumCVertex = std::stoi(args[0]);
+  MeshNumCVertex = std_stoi(args[0]);
   return pOk;
 }
 
@@ -731,9 +740,9 @@ ASEParser_t::pError_t Mesh_t::SetMeshNormals(std::vector<std::string>& args)
 ASEParser_t::pError_t MeshNormals_t::SetMeshFaceNormal(std::vector<std::string>& args)
 {
   Vector3f val;
-  val.X = std::stof(args[1]);
-  val.Y = std::stof(args[2]);
-  val.Z = std::stof(args[3]);
+  val.X = std_stof(args[1]);
+  val.Y = std_stof(args[2]);
+  val.Z = std_stof(args[3]);
   MeshFaceNormal.push_back(val);
   return pOk;
 }
@@ -745,25 +754,25 @@ ASEParser_t::pError_t MeshNormals_t::SetMeshVertexNormal(std::vector<std::string
 
 ASEParser_t::pError_t Geomobject_t::SetPropMotionBlur(std::vector<std::string>& args)
 {
-  PropMotionBlur = std::stoi(args[0]);
+  PropMotionBlur = std_stoi(args[0]);
   return pOk;
 }
 
 ASEParser_t::pError_t Geomobject_t::SetPropCastShadow(std::vector<std::string>& args)
 {
-  PropCastShadow = std::stoi(args[0]);
+  PropCastShadow = std_stoi(args[0]);
   return pOk;
 }
 
 ASEParser_t::pError_t Geomobject_t::SetPropRecvShadow(std::vector<std::string>& args)
 {
-  PropRecvShadow = std::stoi(args[0]);
+  PropRecvShadow = std_stoi(args[0]);
   return pOk;
 }
 
 ASEParser_t::pError_t Geomobject_t::SetMaterialRef(std::vector<std::string>& args)
 {
-  MaterialRef = std::stoi(args[0]);
+  MaterialRef = std_stoi(args[0]);
   return pOk;
 }
 

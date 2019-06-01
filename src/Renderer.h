@@ -8,6 +8,9 @@
 #ifndef RENDERER_H_
 #define RENDERER_H_
 
+#ifdef __WIN32__
+#include <windows.h>
+#endif
 #include <string>
 #include <vector>
 #include <SDL2/SDL.h>

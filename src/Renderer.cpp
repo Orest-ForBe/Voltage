@@ -84,11 +84,14 @@ void Renderer_t::Init(const std::string & winname, int width, int height, bool f
 
   IMG_Init(IMG_INIT_PNG | IMG_INIT_JPG | IMG_INIT_WEBP);
 
+#ifdef __WIN32__
+  glewExperimental = TRUE;
+#endif
   glewInit();
 
   glEnable(GL_DEPTH_TEST);
   glDepthMask(GL_TRUE);
-  glDepthFunc(GL_LEQUAL);
+//  glDepthFunc(GL_LEQUAL);
   glClearDepth(1.f);
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
