@@ -72,7 +72,7 @@ void Renderer_t::Init(const std::string & winname, int width, int height, bool f
   SDL_GL_SetAttribute(SDL_GL_ALPHA_SIZE, 8);
 
   win = SDL_CreateWindow(winname.c_str(),
-  SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_OPENGL /*| SDL_WINDOW_SHOWN | SDL_WINDOW_ALLOW_HIGHDPI*/);
+  SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_OPENGL | SDL_WINDOW_FULLSCREEN/*| SDL_WINDOW_SHOWN | SDL_WINDOW_ALLOW_HIGHDPI*/);
   glContext = SDL_GL_CreateContext(win);
   SDL_GetWindowSize(win, &win_width, &win_height);
 

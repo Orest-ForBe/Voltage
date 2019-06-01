@@ -32,9 +32,12 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 int main(int argc, char **argv)
 #endif
 {
+  SDL_Event event;
+  bool IsCloseWindow = false;
+
   Renderer = new Renderer_t();
 
-  Renderer->Init("Voltage", 1366, 768, false);
+  Renderer->Init("Voltage", 1366, 768, true);
   SDL_GL_SetSwapInterval(0);
 
   Renderer->LoadObject("fence", "models/fence_linear.ASE");
@@ -43,7 +46,8 @@ int main(int argc, char **argv)
   Renderer->LoadObject("pcb", "models/pcb.ASE");
   Renderer->LoadObject("Transformer", "models/Transformer_Box.ASE");
 
-  GLint ts = Renderer->getRCache().LoadTexture("TopScreen.png");
+//  GLint ts = Renderer->getRCache().LoadTexture("TopScreen.png");
+  GLint ts = Renderer->getRCache().LoadTexture("hud.png");
 
   Cam1 = new Camera_t(Renderer);
   Renderer->AddCamera(Cam1);
@@ -103,7 +107,7 @@ int main(int argc, char **argv)
   int state = 0;
 
 
-  while (1)
+  while (!IsCloseWindow)
   {
     Cam1->Pos.X = 0 + 30 * 7 * sin(a);
     Cam1->Pos.Y = 50 * 10 + 250 * cos(b);
@@ -170,7 +174,18 @@ int main(int argc, char **argv)
 
 
     Renderer->UpdateScreen();
-//    SDL_Delay(10);
+    SDL_Delay(10);
     SDL_PumpEvents();
+
+
+    while (SDL_PollEvent(&event))
+    {
+      if (event.type == SDL_QUIT)
+        IsCloseWindow = true;
+
+      if ((event.type == SDL_KEYDOWN) && (event.key.keysym.sym == SDLK_ESCAPE))
+        IsCloseWindow = true;
+
+    }
   }
 }
