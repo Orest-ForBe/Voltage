@@ -15,6 +15,7 @@
 #include <vector>
 #include <SDL2/SDL.h>
 #include "Model3D.h"
+#include "shader.h"
 
 class RenderCache_t;
 
@@ -55,6 +56,10 @@ public:
   int win_height;
 
   struct nk_context *ctx;
+
+  Shader * Shd;
+
+
 
 };
 

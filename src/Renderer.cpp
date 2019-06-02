@@ -72,9 +72,12 @@ void Renderer_t::Init(const std::string & winname, int width, int height, bool f
   SDL_GL_SetAttribute(SDL_GL_ALPHA_SIZE, 8);
 
   win = SDL_CreateWindow(winname.c_str(),
-  SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_OPENGL | SDL_WINDOW_FULLSCREEN/*| SDL_WINDOW_SHOWN | SDL_WINDOW_ALLOW_HIGHDPI*/);
+  SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_OPENGL/* | SDL_WINDOW_FULLSCREEN| SDL_WINDOW_SHOWN | SDL_WINDOW_ALLOW_HIGHDPI*/);
   glContext = SDL_GL_CreateContext(win);
   SDL_GetWindowSize(win, &win_width, &win_height);
+
+  glEnable(GL_MULTISAMPLE);
+  glHint(GL_MULTISAMPLE_FILTER_HINT_NV, GL_NICEST);
 
   glAlphaFunc(GL_ALWAYS, 0.1);
   glEnable(GL_ALPHA_TEST);
@@ -96,6 +99,8 @@ void Renderer_t::Init(const std::string & winname, int width, int height, bool f
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
   gluPerspective(40.f, 16.0 / 9.0/*1.f*/, 1.f, 10000.f);
+
+  Shd = new Shader("shaders/texture.vs", "shaders/texture.fs");
 }
 
 
