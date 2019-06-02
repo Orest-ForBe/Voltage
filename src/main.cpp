@@ -50,8 +50,8 @@ int main(int argc, char **argv)
   Renderer->LoadObject("pcb", "models/pcb.ASE");
   Renderer->LoadObject("Transformer", "models/Transformer_Box.ASE");
 
-  GLint ts = Renderer->getRCache().LoadTexture("TopScreen.png");
-//  GLint ts = Renderer->getRCache().LoadTexture("hud.png");
+//  GLint ts = Renderer->getRCache().LoadTexture("TopScreen.png");
+  GLint ts = Renderer->getRCache().LoadTexture("hud.png");
 
   Cam1 = new Camera_t(Renderer);
   Renderer->AddCamera(Cam1);
