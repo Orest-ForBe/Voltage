@@ -1,0 +1,13 @@
+*.log
+token.txt
+Saved
+Binaries/*
+.idea 
+.vs
+.vsconfig
+Intermediate
+Content/*
+
+!Binaries/.gitkeep
+!Content/.gitkeep
+
